@@ -1,7 +1,18 @@
 body {
-    color: white;
+    color: #474747;
     font-family: 'Quicksand', sans-serif;
+    height: 100vh;
+    background: linear-gradient(90deg, #3bceac 50%, #ffd23f 50%); 
 }
+
+@media screen and (max-width: 480px) {
+    body {
+        background: unset;
+    }
+}
+
+/* ----------- Cabeçalho -----------------
+*/
 
 .cabecalho {
     background-color:#540D6E;
@@ -75,10 +86,70 @@ body {
 @media screen and (max-width: 480px) {
     .cabecalho_titulo {
         text-align: center;
-
     }
 
     .cabecalho_botao {
         width: unset;
     }
 }
+
+/* --------- Principal -------------
+*/
+
+.principal {
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    display: flex;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+.principal_coluna {
+    flex: 1;
+    min-width: 300px;
+}
+
+.principal_coluna:first-child {
+    background-color: #3bceac;
+}
+.principal_coluna:last-child {
+    background-color: #ffd23f;
+}
+
+.principal_secao {
+    margin-bottom: 50px;
+    padding: 0 10px;
+}
+
+.principal_titulo {
+    padding: 8px 0;
+    text-align: center;
+    font-size: 28px;
+    color: #fff;
+    background-color: #540d6e;
+    border-radius: 5px;
+}
+
+.principal_lista {
+    list-style: none;
+}
+
+.principal_lista li label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.principal_lista input {
+    height: 20px;
+    width: 20px;
+    margin: 5px;
+}
+
+.principal_lista span {
+    font-size: 20px;
+}
+
+
+
