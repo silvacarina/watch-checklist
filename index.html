@@ -4,11 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/normalize.css">
     <title>Watch Checklist</title>
 </head>
 <body>
-    <h1>Watch Checklist</h1>
+    
+    <header class="cabecalho">
+
+        <div class="cabecalho_container">
+
+            <img class="cabecalho_img" src="./imagens/meninas_filme.svg" alt="">
+
+            <div class="cabecalho_conteudo">
+                <h1 class="cabecalho_titulo">Watch Checklist</h1>
+                <form class="cabecalho_form">
+                    <div class="cabecalho_informacoes">
+                        <input class="cabecalho_campo" type="text" placeholder="Insira um filme ou uma série" name="nome">
+                        <button class="cabecalho_botao" type="submit">Inserir</button>
+                    </div>
+                    <label class="cabecalho_tipo">
+                        <input type="radio" name="categoria" value="filme" checked>
+                        <span>Filme</span>
+                    </label>
+                    <label class="cabecalho_tipo">
+                        <input type="radio" name="categoria" value="serie">
+                        <span>Série</span>
+                    </label>
+                </form>
+            </div>
+
+        </div>
+
+    </header>
+
 </body>
 </html>
