@@ -30,9 +30,9 @@
 
             <div class="cabecalho_conteudo">
                 <h1 class="cabecalho_titulo">Watch Checklist</h1>
-                <form class="cabecalho_form">
+                <form id="formulario_informacoes" class="cabecalho_form">
                     <div class="cabecalho_informacoes">
-                        <input class="cabecalho_campo" type="text" placeholder="Insira um filme ou uma série" name="nome">
+                        <input id="cabecalho_campo_texto" class="cabecalho_campo" type="text" placeholder="Insira um filme ou uma série" name="nome">
                         <button class="cabecalho_botao" type="submit">Inserir</button>
                     </div>
                     <label class="cabecalho_tipo">
@@ -54,49 +54,14 @@
         <div class="principal_coluna">
             <div class="principal_secao">
                 <h2 class="principal_titulo">Filmes</h2>
-                <ul class="principal_lista">
-                    <li>
-                        <label>
-                            <input type="checkbox">
-                            <span>Senhor dos anéis</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="checkbox">
-                            <span>Pets 2</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="checkbox">
-                            <span>Invocação do mal 4</span>
-                        </label>
-                    </li>
+                <ul id="filmes_lista" class="principal_lista">
+                    <li class="principal_item_descricao">Insira um filme para ele aparecer aqui</li>
                 </ul>
             </div>
 
             <div class="principal_secao">
                 <h2 class="principal_titulo">Filmes já assistidos</h2>
-                <ul class="principal_lista">
-                    <li>
-                        <label>
-                            <input type="checkbox" checked>
-                            <span>Corra</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="checkbox" checked>
-                            <span>Xuxa</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="checkbox" checked>
-                            <span>Lagoa Azul</span>
-                        </label>
-                    </li>
+                <ul id="filmes_assistidos_lista" class="principal_lista">
                 </ul>
             </div>
         </div>
@@ -104,60 +69,20 @@
         <div class="principal_coluna">
             <div class="principal_secao">
                 <h2 class="principal_titulo">Séries</h2>
-                <ul class="principal_lista">
-                    <li>
-                        <label>
-                            <input type="checkbox">
-                            <span>Senhor dos anéis</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="checkbox">
-                            <span>Pets 2</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="checkbox">
-                            <span>Invocação do mal 4</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="checkbox">
-                            <span>A Cabana</span>
-                        </label>
-                    </li>
+                <ul id="series_lista" class="principal_lista">
                 </ul>
             </div>
 
             <div class="principal_secao">
                 <h2 class="principal_titulo">Séries já assistidas</h2>
-                <ul class="principal_lista">
-                    <li>
-                        <label>
-                            <input type="checkbox" checked>
-                            <span>Corra</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="checkbox" checked>
-                            <span>Xuxa</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="checkbox" checked>
-                            <span>Lagoa Azul</span>
-                        </label>
-                    </li>
+                <ul id="series_assistidos_lista" class="principal_lista">
                 </ul>
             </div>
         </div>
 
     </main>
+
+    <script src="./js/script.js"></script>
 
 </body>
 </html>

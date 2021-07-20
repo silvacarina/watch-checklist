@@ -133,7 +133,12 @@ body {
 
 .principal_lista {
     list-style: none;
+    padding: 0 8px;
 }
+
+/* .principal_item_descricao {
+    color: white;
+} */
 
 .principal_lista li label {
     display: flex;
