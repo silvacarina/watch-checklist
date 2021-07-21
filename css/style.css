@@ -71,6 +71,7 @@ body {
     border: none;
     border-radius: 2px;
     background-color: #fdd656;
+    cursor: pointer;
 }
 
 .cabecalho_tipo {
@@ -140,6 +141,7 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
+    cursor: pointer;
 }
 
 .principal_lista input {
