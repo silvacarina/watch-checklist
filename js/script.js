@@ -1,33 +1,38 @@
 // DADOS
 
-var itens = JSON.parse(localStorage.getItem('armazenamentoItens'))  || Array()
+var itensArmazenados = JSON.parse(localStorage.getItem('armazenamentoItens'))  || Array()
 
 function adicionarItem (item) {
-    itens.push(item)
-    localStorage.setItem('armazenamentoItens', JSON.stringify(itens))
+    itensArmazenados.push(item)
+    localStorage.setItem('armazenamentoItens', JSON.stringify(itensArmazenados))
 }
 
-function inserirItensHtml () {
-    var todosFilmesHtml = ''
-    var todasSeriesHtml = ''
+function inserirItemHtml (item) {
+    var elementoListaFilmes = document.getElementById('filmes_lista')
+    var elementoListaSeries = document.getElementById('series_lista')
 
-    itens.forEach(function(itemAtual) {
-        var itemHtml = `<li>
-                            <label>
-                                <input type="checkbox">
-                                <span>${itemAtual.nome}</span>
-                            </label>
-                        </li>`
-        
-        if (itemAtual.categoria === 'filme') {
-            todosFilmesHtml = todosFilmesHtml + itemHtml
-        } else {
-            todasSeriesHtml = todasSeriesHtml + itemHtml
-        }
+    var itemNode = document.createElement('li')
+    var labelNode = document.createElement('label')
+    var inputNode = document.createElement('input')
+    var spanNode = document.createElement('span')
+
+    spanNode.innerText = item.nome
+    inputNode.type = 'checkbox'
+    labelNode.appendChild(inputNode)
+    labelNode.appendChild(spanNode)
+    itemNode.appendChild(labelNode)
+    
+    if (item.categoria === 'filme') {
+        elementoListaFilmes.appendChild(itemNode)
+    } else {
+        elementoListaSeries.appendChild(itemNode)
+    }
+}
+
+function inserirItensArmazenadosNoHtml () {
+    itensArmazenados.forEach(function(itemAtual) {
+        inserirItemHtml(itemAtual)
     })
-
-    document.getElementById('filmes_lista').innerHTML = todosFilmesHtml
-    document.getElementById('series_lista').innerHTML = todasSeriesHtml
 }
 
 
@@ -46,10 +51,11 @@ function EnviarFormulario(evento) {
     }
 
     adicionarItem(itemDoFormulario)
+    inserirItemHtml(itemDoFormulario)
+
     document.getElementById('cabecalho_campo_texto').value = ''
-    inserirItensHtml()
 }
 
 form.addEventListener("submit", EnviarFormulario)
 
-inserirItensHtml()
+inserirItensArmazenadosNoHtml()
