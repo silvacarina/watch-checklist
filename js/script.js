@@ -1,31 +1,73 @@
-// DADOS
-
+var elementoListaFilmes = document.getElementById('filmes_lista')
+var elementoListaSeries = document.getElementById('series_lista')
+var elementoListaFilmesAssistidos = document.getElementById('filmes_assistidos_lista')
+var elementoListaSeriesAssistidos = document.getElementById('series_assistidos_lista')
 var itensArmazenados = JSON.parse(localStorage.getItem('armazenamentoItens'))  || Array()
 
-function adicionarItem (item) {
+// Armazenamento 
+function adicionarItemArmazenamento (item) {
     itensArmazenados.push(item)
     localStorage.setItem('armazenamentoItens', JSON.stringify(itensArmazenados))
 }
 
-function inserirItemHtml (item) {
-    var elementoListaFilmes = document.getElementById('filmes_lista')
-    var elementoListaSeries = document.getElementById('series_lista')
+function alternarItemAssistidoArmazenamento (item) {
+    var itensArmazenadosAtual = JSON.parse(localStorage.getItem('armazenamentoItens'))
+    itensArmazenadosAtual.find((itemAtual) => itemAtual.nome === item.nome).jaFoiAssistido = item.jaFoiAssistido
+    localStorage.setItem('armazenamentoItens', JSON.stringify(itensArmazenadosAtual))
+}
 
+// DADOS HTML
+function alternarItemAssistido (item, itemNode) {
+    if (item.jaFoiAssistido === true) {
+        item.jaFoiAssistido = false;
+        if (item.categoria === 'filme') {
+            elementoListaFilmesAssistidos.removeChild(itemNode)
+            elementoListaFilmes.appendChild(itemNode)
+        } else {
+            elementoListaSeriesAssistidos.removeChild(itemNode)
+            elementoListaSeries.appendChild(itemNode)
+        }
+    } else {
+        item.jaFoiAssistido = true;
+        if (item.categoria === 'filme') {
+            elementoListaFilmes.removeChild(itemNode)
+            elementoListaFilmesAssistidos.appendChild(itemNode)
+        } else {
+            elementoListaSeries.removeChild(itemNode)
+            elementoListaSeriesAssistidos.appendChild(itemNode)
+        }
+    }
+
+    alternarItemAssistidoArmazenamento(item)
+}
+
+function inserirItemHtml (item) {
     var itemNode = document.createElement('li')
     var labelNode = document.createElement('label')
-    var inputNode = document.createElement('input')
+    var checkboxNode = document.createElement('input')
     var spanNode = document.createElement('span')
 
     spanNode.innerText = item.nome
-    inputNode.type = 'checkbox'
-    labelNode.appendChild(inputNode)
+    checkboxNode.type = 'checkbox'
+    checkboxNode.checked = item.jaFoiAssistido
+    labelNode.appendChild(checkboxNode)
     labelNode.appendChild(spanNode)
     itemNode.appendChild(labelNode)
+
+    checkboxNode.addEventListener("change", alternarItemAssistido.bind(null, item, itemNode))
     
     if (item.categoria === 'filme') {
-        elementoListaFilmes.appendChild(itemNode)
+        if (item.jaFoiAssistido === true) {
+            elementoListaFilmesAssistidos.appendChild(itemNode)
+        } else {
+            elementoListaFilmes.appendChild(itemNode)
+        }
     } else {
-        elementoListaSeries.appendChild(itemNode)
+        if (item.jaFoiAssistido === true) {
+            elementoListaSeriesAssistidos.appendChild(itemNode)
+        } else {
+            elementoListaSeries.appendChild(itemNode)
+        }
     }
 }
 
@@ -47,10 +89,11 @@ function EnviarFormulario(evento) {
 
     var itemDoFormulario = {
         nome: nome,
-        categoria: categoria
+        categoria: categoria,
+        jaFoiAssistido: false
     }
 
-    adicionarItem(itemDoFormulario)
+    adicionarItemArmazenamento(itemDoFormulario)
     inserirItemHtml(itemDoFormulario)
 
     document.getElementById('cabecalho_campo_texto').value = ''
