@@ -87,6 +87,10 @@ function EnviarFormulario(evento) {
     var nome = document.getElementById('cabecalho_campo_texto').value
     var categoria = document.querySelector('input[name=categoria]:checked').value
 
+    if (nome === '') {
+        return
+    } 
+
     var itemDoFormulario = {
         nome: nome,
         categoria: categoria,
