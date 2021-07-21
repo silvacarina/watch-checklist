@@ -136,10 +136,6 @@ body {
     padding: 0 8px;
 }
 
-/* .principal_item_descricao {
-    color: white;
-} */
-
 .principal_lista li label {
     display: flex;
     align-items: center;
