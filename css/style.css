@@ -148,6 +148,10 @@ body {
     margin: 5px;
 }
 
+.principal_lista input:checked + span {
+    text-decoration: line-through;
+}
+
 .principal_lista span {
     font-size: 20px;
 }
