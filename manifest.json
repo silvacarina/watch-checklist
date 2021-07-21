@@ -1,0 +1,30 @@
+{
+  "name": "Watch Checklist",
+  "short_name": "Watch Checklist",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#540D6E",
+  "description": "Checklist de séries e filmes",
+  "icons": [
+    {
+      "src": "images/favicon-16-16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "images/favicon-16-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-144-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-152-152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    }
+  ]
+}
