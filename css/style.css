@@ -137,7 +137,7 @@ body {
     padding: 0 8px;
 }
 
-.principal_lista li label {
+.principal_lista li {
     display: flex;
     align-items: center;
     margin-bottom: 5px;

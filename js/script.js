@@ -43,16 +43,14 @@ function alternarItemAssistido (item, itemNode) {
 
 function inserirItemHtml (item) {
     var itemNode = document.createElement('li')
-    var labelNode = document.createElement('label')
     var checkboxNode = document.createElement('input')
     var spanNode = document.createElement('span')
 
     spanNode.innerText = item.nome
     checkboxNode.type = 'checkbox'
     checkboxNode.checked = item.jaFoiAssistido
-    labelNode.appendChild(checkboxNode)
-    labelNode.appendChild(spanNode)
-    itemNode.appendChild(labelNode)
+    itemNode.appendChild(checkboxNode)
+    itemNode.appendChild(spanNode)
 
     checkboxNode.addEventListener("change", alternarItemAssistido.bind(null, item, itemNode))
     
