@@ -12,13 +12,13 @@ function adicionarItemArmazenamento (item) {
 
 function alternarItemAssistidoArmazenamento (item) {
     var itensArmazenadosAtual = JSON.parse(localStorage.getItem('armazenamentoItens'))
-    itensArmazenadosAtual.find((itemAtual) => itemAtual.nome === item.nome).jaFoiAssistido = item.jaFoiAssistido
+    itensArmazenadosAtual.find((itemAtual) => itemAtual.id === item.id).jaFoiAssistido = item.jaFoiAssistido
     localStorage.setItem('armazenamentoItens', JSON.stringify(itensArmazenadosAtual))
 }
 
 function removerItemArmazenamento (item) {
     var itensArmazenadosAtual = JSON.parse(localStorage.getItem('armazenamentoItens'))
-    var indiceDoItem = itensArmazenadosAtual.findIndex((itemAtual) => itemAtual.nome === item.nome)
+    var indiceDoItem = itensArmazenadosAtual.findIndex((itemAtual) => itemAtual.id === item.id)
     itensArmazenadosAtual.splice(indiceDoItem, 1)
     localStorage.setItem('armazenamentoItens', JSON.stringify(itensArmazenadosAtual))
 }
@@ -127,6 +127,7 @@ function EnviarFormulario(evento) {
     } 
 
     var itemDoFormulario = {
+        id: new Date().getTime(),
         nome: nome,
         categoria: categoria,
         jaFoiAssistido: false
