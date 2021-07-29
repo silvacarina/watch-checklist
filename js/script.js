@@ -16,6 +16,13 @@ function alternarItemAssistidoArmazenamento (item) {
     localStorage.setItem('armazenamentoItens', JSON.stringify(itensArmazenadosAtual))
 }
 
+function removerItemArmazenamento (item) {
+    var itensArmazenadosAtual = JSON.parse(localStorage.getItem('armazenamentoItens'))
+    var indiceDoItem = itensArmazenadosAtual.findIndex((itemAtual) => itemAtual.nome === item.nome)
+    itensArmazenadosAtual.splice(indiceDoItem, 1)
+    localStorage.setItem('armazenamentoItens', JSON.stringify(itensArmazenadosAtual))
+}
+
 // DADOS HTML
 function alternarItemAssistido (item, itemNode) {
     if (item.jaFoiAssistido === true) {
@@ -41,18 +48,48 @@ function alternarItemAssistido (item, itemNode) {
     alternarItemAssistidoArmazenamento(item)
 }
 
+function removerItem (item, itemNode) {
+    if (item.jaFoiAssistido === true) {
+        item.jaFoiAssistido = false;
+        if (item.categoria === 'filme') {
+            elementoListaFilmesAssistidos.removeChild(itemNode)
+        } else {
+            elementoListaSeriesAssistidos.removeChild(itemNode)
+        }
+    } else {
+        item.jaFoiAssistido = true;
+        if (item.categoria === 'filme') {
+            elementoListaFilmes.removeChild(itemNode)
+        } else {
+            elementoListaSeries.removeChild(itemNode)
+        }
+    }
+
+    removerItemArmazenamento(item)
+}
+
 function inserirItemHtml (item) {
     var itemNode = document.createElement('li')
     var checkboxNode = document.createElement('input')
     var spanNode = document.createElement('span')
+    var deleteNode = document.createElement('span')
 
+    
     spanNode.innerText = item.nome
+    spanNode.classList.add('principal_item_texto')
+    
     checkboxNode.type = 'checkbox'
     checkboxNode.checked = item.jaFoiAssistido
+    
+    deleteNode.innerText = 'x'
+    deleteNode.classList.add('principal_item_deletar')
+    
     itemNode.appendChild(checkboxNode)
     itemNode.appendChild(spanNode)
+    itemNode.appendChild(deleteNode)
 
-    checkboxNode.addEventListener("change", alternarItemAssistido.bind(null, item, itemNode))
+    checkboxNode.addEventListener('change', alternarItemAssistido.bind(null, item, itemNode))
+    deleteNode.addEventListener('click', removerItem.bind(null, item, itemNode))
     
     if (item.categoria === 'filme') {
         if (item.jaFoiAssistido === true) {
